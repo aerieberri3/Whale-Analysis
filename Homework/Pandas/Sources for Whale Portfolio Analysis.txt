@@ -1,0 +1,65 @@
+Sources for Whale Portfolio Analysis
+ASU-VIRT-FIN-PT-02-2023-U-LOLC/01-Lesson-Plans/04-Pandas/2/Activities/02-columns-01/Solved/
+
+columns-01
+
+# Count nulls
+whale_returns_df.isnull()
+
+# Drop nulls
+whale_returns_df.dropna(inplace=True)
+whale_returns_df
+
+#View Columns Names	
+whale_returns_df.columns
+
+#View Column Data Types
+whale_returns_df.dtypes
+
+#Delete Columns #  Drop Extraneous Columns
+whale_returns_df = whale_returns_df.drop(columns=["Date"])
+
+#Rename Columns Using List
+sp500_history_df.columns
+Index(['Close'], dtype='object')
+columns = ['SP500']
+sp500_history_df.columns = columns
+sp500_history_df.head()
+
+
+#Save Modified DataFrame to New CSV
+whale_returns_df.to_csv('../Starter_Code/Resources/cleaned_whale_returns.csv')
+
+
+Lesson-Plans/04-Pandas/2/Activities/03-data-cleaning-01/Solved/data_cleaning
+03-data_cleaning
+
+# Check Null Counts for Each Column 
+whale_returns_df.df.isnull().sum()
+
+# Convert Columns to Different DataTypes
+sp500_history_df['Close'] = sp500_history_df['Close'].astype('float')
+
+#Edit Data Format in Columns (Remove $ and ,)
+sp500_history_df['Close'] = sp500_history_df['Close'].str.replace('$','')
+sp500_history_df['Close'] = sp500_history_df['Close'].str.replace(',','')
+
+Lesson-Plans/04-Pandas/2/Activities/08-returns-01/Solved
+
+# Calculate the daily return using the 'pct_change()' function
+sp500_history_df = sp500_history_df.pct_change()
+sp500_history_df.head()
+
+Lesson-Plans/04-Pandas/2/Activities/10-concat-01/Solved/concat-01.ipynb
+10-Concat
+
+## Concatenate the DataFrames by columns and perform an inner join
+df_merged = pd.concat([cleaned_whale_returns_df, cleaned_algo_returns_df,cleaned_sp500_history_df], axis="columns", join="inner")
+df_merged
+
+-Lesson-Plans/03-Python-Pandas/Supplemental/Pandas_Reference_Guide
+###Pandas_Reference_Guide
+
+all_portfolios_df = pd.concat([whale_returns_df, algo_returns_df, sp500_history_df], axis="columns", join="inner")
+
+all_portfolios_df

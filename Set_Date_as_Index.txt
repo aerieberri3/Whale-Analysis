@@ -1,0 +1,8 @@
+01-Lesson-Plans/04-Pandas/2/Activities/08-returns-01/Solved/returns-01.ipynb
+
+# Set the date as the index to the DataFrame
+sp500_history_df.set_index(pd.to_datetime(sp500_history_df['Date'], infer_datetime_format=True), inplace=True)
+sp500_history_df.head()
+
+sp500_history_df.drop(columns=['Date'], inplace=True)
+sp500_history_df.head()
